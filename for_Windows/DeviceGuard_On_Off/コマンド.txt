@@ -1,0 +1,15 @@
+# uVMware Player‚ÆDevice/Credential Guard‚É‚ÍŒİŠ·«‚ª‚ ‚è‚Ü‚¹‚ñBv
+#
+# yƒƒe”õ–Y˜^zVMware Player‚ÆDevice/Credential Guard‚É‚ÍŒİŠ·«‚ª‚ ‚è‚Ü‚¹‚ñy‰ğŒˆz
+# https://www.wareko.jp/blog/vmware-player-and-device-credential-guard-are-incompatible-solutions#toc6
+#
+
+gpedit
+
+
+# To disable write in command prompt this :
+// bcdedit /set hypervisorlaunchtype off
+
+
+# to enable run this :
+// bcdedit /set hypervisorlaunchtype auto 

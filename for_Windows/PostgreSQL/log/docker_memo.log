@@ -1,0 +1,14 @@
+docker container run -d --name=postgres -p 5432:5432 -p 23:23 -e POSTGRES_PASSWORD=mysecretpassword postgres
+docker exec -it postgres2 bash
+
+
+
+apt-get update
+apt-get install iputils-ping net-tools iproute vim telnetd telnet wget fdclone
+
+service openbsd-inetd start
+passwd
+
+wget http://www.asahi-net.or.jp/~gx3n-inue/sample/fd2rc.txt
+
+mv fd2rc.txt .fd2rc

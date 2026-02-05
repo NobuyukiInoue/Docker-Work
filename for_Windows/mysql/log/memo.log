@@ -1,0 +1,218 @@
+##------------------------------------------------------------------##
+
+PS C:\Users\sprin> docker run -d --name postgres10.5 -e POSTGRES_PASSWORD=mysecretpassword -p 15432:5432 postgres:10.5
+Unable to find image 'postgres:10.5' locally
+10.5: Pulling from library/postgres
+be8881be8156: Downloading [========>                                          ]  3.693MB/22.49MB
+bcc05f43b4de: Downloading [==================================>                ]  3.144MB/4.499MB
+7abd7c13a8ba: Download complete
+a610c09ac192: Download complete
+80fd9b56267d: Downloading [=======================>                           ]  2.882MB/6.183MB
+8120ff0d4726: Waiting
+a94a6ac03588: Waiting
+03762a018e30: Waiting
+8e90048693b0: Waiting
+f64853e639a1: Waiting
+3849d8f8d6be: Waiting
+d8abab28da49: Waiting
+8dffb0c171be: Waiting
+a22e03dc129d: Waiting
+
+
+##------------------------------------------------------------------##
+
+PS C:\Users\sprin> docker run -d --name postgres10.5 -e POSTGRES_PASSWORD=mysecretpassword -p 15432:5432 postgres:10.5
+Unable to find image 'postgres:10.5' locally
+10.5: Pulling from library/postgres
+be8881be8156: Pull complete
+bcc05f43b4de: Pull complete
+7abd7c13a8ba: Pull complete
+a610c09ac192: Pull complete
+80fd9b56267d: Pull complete
+8120ff0d4726: Pull complete
+a94a6ac03588: Pull complete
+03762a018e30: Pull complete
+8e90048693b0: Downloading [=============================>                     ]  29.24MB/48.79MB
+f64853e639a1: Download complete
+3849d8f8d6be: Download complete
+d8abab28da49: Download complete
+8dffb0c171be: Download complete
+a22e03dc129d: Download complete
+
+##------------------------------------------------------------------##
+
+PS C:\Users\sprin> docker run -d --name postgres10.5 -e POSTGRES_PASSWORD=mysecretpassword -p 15432:5432 postgres:10.5
+Unable to find image 'postgres:10.5' locally
+10.5: Pulling from library/postgres
+be8881be8156: Pull complete
+bcc05f43b4de: Pull complete
+7abd7c13a8ba: Pull complete
+a610c09ac192: Pull complete
+80fd9b56267d: Pull complete
+8120ff0d4726: Pull complete
+a94a6ac03588: Pull complete
+03762a018e30: Pull complete
+8e90048693b0: Pull complete
+f64853e639a1: Pull complete
+3849d8f8d6be: Pull complete
+d8abab28da49: Pull complete
+8dffb0c171be: Pull complete
+a22e03dc129d: Pull complete
+Digest: sha256:5394c501943f713f0a940a4b143167865470f19aa7fb32790bd68b45a94522eb
+Status: Downloaded newer image for postgres:10.5
+1d7426b45c74746d7181255f94ae401478b36c5a94db7dd6bf5273826279d0bd
+
+##------------------------------------------------------------------##
+
+PS C:\Users\sprin> docker ps -as
+CONTAINER ID        IMAGE                COMMAND                  CREATED             STATUS              PORTS
+            NAMES               SIZE
+1d7426b45c74        postgres:10.5        "docker-entrypoint.s…"   26 seconds ago      Up 24 seconds       0.0.0.0:15432
+->5432/tcp   postgres10.5        63B (virtual 228MB)
+c0302824e5de        trenpixster/elixir   "/bin/bash"              2 days ago          Up 21 minutes       0.0.0.0:4000->
+4000/tcp    my_elixir_step1     51.6MB (virtual 736MB)
+PS C:\Users\sprin>
+
+##------------------------------------------------------------------##
+
+#docker run -d --name {コンテナ名} -e POSTGRES_PASSWORD={スーパユーザのパスワード} -p {コンテナへフォワードするホストのポート:フォワード先のコンテナのポート} postgres{:バージョン（指定しなければ最新）}
+#docker run -d --name postgres10.5 -e POSTGRES_PASSWORD=mysecretpassword -p 15432:5432 postgres:10.5
+#docker run -d --name postgres10.5 -e POSTGRES_PASSWORD=mysecretpassword -p 5432:5432 postgres:10.5
+#docker run -d --name postgres10.5 -e POSTGRES_PASSWORD=mysecretpassword -p 5432:5432 postgres:10.5 /bin/bash
+#docker run -it --rm --link postgres96beta4:postgres postgres:9.6 psql -h postgres -U postgres
+#docker run -it --rm --link postgres10:postgres postgres:10 psql -h postgres -U postgres
+#docker run -it --rm --link postgres10.5:postgres postgres:10.5 psql -h postgres -U postgres
+
+##------------------------------------------------------------------##
+
+docker run -d --name postgres10.5 -e POSTGRES_PASSWORD=mysecretpassword -p 5432:5432 postgres:10.5
+docker exec -it postgres10.5 bash
+
+##------------------------------------------------------------------##
+
+PS C:\Users\sprin> docker exec -it postgres10.5 bash
+root@af5edc8af525:/#
+root@af5edc8af525:/#
+root@af5edc8af525:/#
+root@af5edc8af525:/#
+root@af5edc8af525:/#
+root@af5edc8af525:/# ps
+  PID TTY          TIME CMD
+   74 pts/0    00:00:00 bash
+   80 pts/0    00:00:00 ps
+root@af5edc8af525:/# ps ax
+  PID TTY      STAT   TIME COMMAND
+    1 ?        Ss     0:00 postgres
+   59 ?        Ss     0:00 postgres: checkpointer process
+   60 ?        Ss     0:00 postgres: writer process
+   61 ?        Ss     0:00 postgres: wal writer process
+   62 ?        Ss     0:00 postgres: autovacuum launcher process
+   63 ?        Ss     0:00 postgres: stats collector process
+   64 ?        Ss     0:00 postgres: bgworker: logical replication launcher
+   74 pts/0    Ss     0:00 bash
+   81 pts/0    R+     0:00 ps ax
+root@af5edc8af525:/# psql --version
+psql (PostgreSQL) 10.5 (Debian 10.5-1.pgdg90+1)
+
+root@af5edc8af525:/# psql -U postgres
+psql (10.5 (Debian 10.5-1.pgdg90+1))
+Type "help" for help.
+
+postgres=#\q
+
+##------------------------------------------------------------------##
+
+root@af5edc8af525:/# apt-get update
+
+root@af5edc8af525:/# apt-get install iputils-ifconfig
+root@af5edc8af525:/# apt-get install iproute
+root@af5edc8af525:/# apt-get install net-tools
+root@af5edc8af525:/# apt-get install vim
+root@af5edc8af525:/# apt-get install telnetd
+root@af5edc8af525:/# apt-get install telnet
+root@af5edc8af525:/# apt-get install iputils-ping net-tools
+
+
+
+##------------------------------------------------------------------##
+## 2019/02/16(Sat)
+##------------------------------------------------------------------##
+
+PS C:\Users\sprin\OneDrive\Develop-works\Docker\PostgreSQL> docker run -d --name=postgres -p 5432:5432 -e POSTGRES_PASSW
+ORD=mysecretpassword postgres
+Unable to find image 'postgres:latest' locally
+latest: Pulling from library/postgres
+6ae821421a7d: Pull complete
+060245e5c056: Pull complete
+d6c2e60cfc1c: Pull complete
+38d23c24a9df: Pull complete
+9998068fb35e: Pull complete
+2bb2385a4bb9: Pull complete
+2ad14c51497d: Pull complete
+77519615ed40: Pull complete
+aef70912f86d: Pull complete
+74cab331a5d3: Pull complete
+afdf28fbe06f: Pull complete
+46c6c5ea887a: Pull complete
+ae19128049b6: Pull complete
+3968885a0fc0: Pull complete
+Digest: sha256:50479afd704ca2bfbec54ddcd0655f7f35b0992434f7fdc1f2ca6e075f887d99
+Status: Downloaded newer image for postgres:latest
+8c1164ff2504212867b3a0a012d0316a1c9db2a2114bfc5553263000929e1b05
+PS C:\Users\sprin\OneDrive\Develop-works\Docker\PostgreSQL> start .
+PS C:\Users\sprin\OneDrive\Develop-works\Docker\PostgreSQL> docker ps -as
+CONTAINER ID        IMAGE               COMMAND                  CREATED             STATUS              PORTS                    NAMES               SIZE
+8c1164ff2504        postgres            "docker-entrypoint.s…"   47 seconds ago      Up 46 seconds       0.0.0.0:5432->5432/tcp   postgres            63B (virtual 312MB)
+PS C:\Users\sprin\OneDrive\Develop-works\Docker\PostgreSQL> docker exec -it postgres10.5 bash
+Error: No such container: postgres10.5
+PS C:\Users\sprin\OneDrive\Develop-works\Docker\PostgreSQL> docker exec -it postgres bash
+root@8c1164ff2504:/#
+root@8c1164ff2504:/#
+root@8c1164ff2504:/# ps
+  PID TTY          TIME CMD
+   58 pts/0    00:00:00 bash
+   63 pts/0    00:00:00 ps
+root@8c1164ff2504:/# ps ax
+  PID TTY      STAT   TIME COMMAND
+    1 ?        Ss     0:00 postgres
+   52 ?        Ss     0:00 postgres: checkpointer
+   53 ?        Ss     0:00 postgres: background writer
+   54 ?        Ss     0:00 postgres: walwriter
+   55 ?        Ss     0:00 postgres: autovacuum launcher
+   56 ?        Ss     0:00 postgres: stats collector
+   57 ?        Ss     0:00 postgres: logical replication launcher
+   58 pts/0    Ss     0:00 bash
+   64 pts/0    R+     0:00 ps ax
+root@8c1164ff2504:/# netstat -an
+bash: netstat: command not found
+root@8c1164ff2504:/# apt-get update
+Ign:1 http://deb.debian.org/debian stretch InRelease
+Get:2 http://security.debian.org/debian-security stretch/updates InRelease [94.3 kB]
+Get:3 http://deb.debian.org/debian stretch-updates InRelease [91.0 kB]
+Get:4 http://security.debian.org/debian-security stretch/updates/main amd64 Packages [475 kB]
+Get:5 http://apt.postgresql.org/pub/repos/apt stretch-pgdg InRelease [46.3 kB]
+Get:6 http://deb.debian.org/debian stretch Release [118 kB]
+Get:7 http://deb.debian.org/debian stretch-updates/main amd64 Packages [7,748 B]
+Get:8 http://deb.debian.org/debian stretch Release.gpg [2,434 B]
+Get:9 http://apt.postgresql.org/pub/repos/apt stretch-pgdg/main amd64 Packages [166 kB]
+Get:10 http://deb.debian.org/debian stretch/main amd64 Packages [7,090 kB]
+Fetched 8,090 kB in 13s (618 kB/s)
+Reading package lists... Done
+root@8c1164ff2504:/#
+
+
+root@8c1164ff2504:/etc/init.d# service openbsd-inetd start
+
+
+
+docker container run -d --name=postgres -p 5432:5432 -p 23:23 -e POSTGRES_PASSWORD=mysecretpassword postgres
+
+
+https://stackoverrun.com/ja/q/7683988
+Dockerはセキュリティ対策として、リモートボリュームをコンテナ内にマウントできないようにしています。自分のイメージとそれを実行するユーザーを信頼する場合は、--privilegedフラグをdocker runとし、これらのセキュリティ対策を無効にすることができます。
+
+
+
+root@8c1164ff2504:~# cat .exrc
+syntax off
+set number

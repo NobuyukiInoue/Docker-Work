@@ -1,0 +1,14 @@
+version: '3.3'
+services:
+  postgres:
+    restart: always
+    build: .
+    container_name: 'postgres'
+    working_dir: '/root/'
+    tty: true
+    privileged: true
+    volumes:
+      - C:\Users\sprin\OneDrive:/mnt/OneDrive
+    ports:
+      - "5432:5432"
+      - "23:23"

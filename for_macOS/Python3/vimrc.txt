@@ -1,0 +1,4 @@
+syntax off
+set list
+
+

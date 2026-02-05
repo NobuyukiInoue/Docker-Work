@@ -1,0 +1,17 @@
+version: '3'
+services:
+  nodejs:
+    restart: always
+    build: .
+    container_name: 'nodejs'
+    working_dir: '/root/'
+    tty: true
+    privileged: true
+    volumes:
+      - .:/app
+#     - D:\username\OneDrive:/mnt/OneDrive
+      - ~/OneDrive:/mnt/OneDrive
+    restart: "no"
+    ports:
+      - "3000:3000"
+      - "23:23"
